@@ -2,6 +2,10 @@
 
 A personal Android and iPhone app that reminds you of birthdays and other yearly dates at **12:00 AM on the day**. Paste your list once (from Google Keep or anywhere), and it runs fully offline: no account, no server, no internet permission.
 
+[![Download APK](https://img.shields.io/badge/Download-Android%20APK-B5533C?style=for-the-badge&logo=android&logoColor=white)](https://github.com/HarshAn119/Birthday_reminders/releases/latest/download/app-arm64-v8a-release.apk)
+
+Open the link on your Android phone and install it. Android will ask you to allow installs from your browser once. iPhone builds aren't published.
+
 ## Features
 
 - **Paste or type dates.** One per line. The preview shows what was understood and flags lines it couldn't read, so nothing is skipped silently.
@@ -90,29 +94,7 @@ dart run flutter_launcher_icons
 
 When releasing an icon change, raise the build number in `pubspec.yaml`. Android caches app icons per version.
 
-## Releasing (Android)
-
-Release builds are signed with your upload key. They never fall back to the debug key: if the key isn't set up, the build fails.
-
-1. Keep the keystore **outside** the repo, for example `~/keys/birthdays-upload.jks`.
-2. Create `android/key.properties`. It's git-ignored; never commit it.
-
-   ```properties
-   storePassword=...
-   keyPassword=...
-   keyAlias=upload
-   storeFile=/Users/<you>/keys/birthdays-upload.jks
-   ```
-
-3. Build one file per phone type (about 19 MB each instead of 50 MB):
-
-   ```bash
-   flutter build apk --release --split-per-abi
-   ```
-
-4. Install `build/app/outputs/flutter-apk/app-arm64-v8a-release.apk` on the phone.
-
-**Back up the keystore and its password off this machine.** If they're lost, installed copies can never be updated; users would have to uninstall, which wipes their list.
+To build and publish a new version, see [RELEASING.md](RELEASING.md).
 
 ## Privacy and security
 
