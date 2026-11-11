@@ -1,0 +1,32 @@
+<!doctype html>
+<!-- Source art for the app icon. Render with headless Chrome: icon.html#full | #fg | #stat (see README). -->
+<html><head><meta charset="utf-8"><style>
+@font-face{font-family:F;src:url(../fonts/Fraunces-SemiBold.ttf)}
+@font-face{font-family:C;src:url(../fonts/Caveat-Bold.ttf)}
+html,body{margin:0;background:transparent}svg{display:block;width:100vw;height:100vh}
+</style></head><body>
+<svg viewBox="0 0 100 100" id="s">
+ <defs>
+  <mask id="cut"><rect width="100" height="100" fill="#fff"/>
+   <g transform="rotate(4 50 52)"><text x="50" y="66" text-anchor="middle" font-family="F" font-size="34" fill="#000">12</text></g></mask>
+ </defs>
+ <rect id="bg" width="100" height="100" fill="#B5533C"/>
+ <g id="art" transform-origin="50 50">
+  <g transform="rotate(4 50 52)">
+   <rect x="20" y="24" width="60" height="56" fill="#FBF7F0"/>
+   <rect x="38" y="18" width="24" height="10" fill="#E8C478" opacity=".9" transform="rotate(-4 50 23)"/>
+   <text x="50" y="66" text-anchor="middle" font-family="F" font-size="34" fill="#3B2F25">12</text>
+   <text x="50" y="40" text-anchor="middle" font-family="C" font-size="13" fill="#B5533C">today</text>
+  </g>
+ </g>
+ <g id="stat" mask="url(#cut)" fill="#fff" style="display:none">
+  <g transform="rotate(4 50 52)"><rect x="20" y="24" width="60" height="56"/><rect x="38" y="18" width="24" height="10" transform="rotate(-4 50 23)"/></g>
+ </g>
+</svg>
+<script>
+const m = location.hash.slice(1) || 'full';
+if (m !== 'full') document.getElementById('bg').remove();
+// fg: flutter_launcher_icons already insets the foreground 16% for Android's adaptive mask
+if (m === 'stat') { document.getElementById('art').remove(); document.getElementById('stat').style.display = ''; }
+</script>
+</body></html>
